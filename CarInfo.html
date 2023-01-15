@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+      <!--http://www.carqueryapi.com   API-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://www.carqueryapi.com/js/jquery.min.js"></script>
+      <script type="text/javascript" src="https://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+
+
+		<!-- jsCalendar v1.4.4 Javascript and CSS -->
+		<script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js" integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css" integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w" crossorigin="anonymous">
+	</head>
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+
+
+  <link rel="stylesheet" href="./css/styles.css">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!--<link rel="stylesheet" type="text/css" href="./css/stlyfile.css">-->
+  <!--<script type="text/javascript" src="./js/pushinfo.js"></script>-->
+
+  <title>>Ger’s Garage</title>
+
+</head>
+
+<body>
+
+     <!-- Image and text -->
+
+     <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
+            <a class="navbar-brand" href="#">
+              <img src="./img/phone-icon-hi.png" width="30" height="30" class="d-inline-block align-top" alt="icon"
+                align="left">
+              <br>0838975907
+            </a>
+          </div>
+
+          <div class="col-xs-12 col-md-4">
+            <h5>Ger’s Garage</h5>
+          </div>
+        </div>
+      </div>
+
+    <nav class="navbar navbar-light" style="background-color: #3396FF;">
+        <!-- Navbar content -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="./login.html">Back to main page</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+             <!--<a class="nav-item nav-link active" href="./login.html">Back to the Login page <span class="sr-only">(current)</span></a>-->
+
+
+            </div>
+          </div>
+        </nav>
+
+      </nav>
+
+  <div class="content">
+  <br>
+  <h5> Personal information</h5>
+  <br>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Full Name</span>
+    </div>
+    <input type="text" aria-label="First name" class="form-control" id="firstname">
+    <input type="text" aria-label="Last name" class="form-control" id="secondname">
+  </div>
+  <br>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Phone Number</span>
+    </div>
+    <input type="number" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" id="phonenumber">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Birthday</span>
+    </div>
+    <input type="date" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" id="birthday">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default" id="address">
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Comment</span>
+    </div>
+    <textarea class="form-control" aria-label="With textarea" id="comment"></textarea>
+  </div>
+  <br>
+  <button type="button" class="btn btn-primary btn-sm" onclick="pushcustomer()">Submit</button>
+  <br>
+  <br>
+  <h5> Car Specifications</h5>
+
+
+
+
+  <form>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationServer01">Vehicle Licence Number</label>
+        <input type="text" class="form-control is-invalid" id="validationServer01" placeholder="LicenceNumber"value="192D" required>
+        <div class="invalid-feedback">
+          Please provide a valid licence number.
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+          <label for="validationServer05">VehicleEngineType</label>
+          <select id="validationServer05" class="form-control is-valid" placeholder="VehicleEngineType" required>
+          <div class="invalid-feedback">
+            Looks good!
+          </div>
+            <option selected>Diesel</option>
+            <option>Petrol</option>
+            <option>;Hybrid</option>
+            <option>Electric</option>
+          </select>
+        </div>
+      <div class="form-group col-md-4">
+        <label for="validationServer03">Vehicle type</label>
+        <select id="validationServer03" class="form-control is-valid" placeholder="Vehicletype" required>
+        <div class="invalid-feedback">
+          Looks good!
+        </div>
+          <option selected>motorbikes</option>
+          <option>cars,</option>
+          <option>vans</option>
+          <option>buses</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!--
+      <div class="col-md-4 mb-3">
+          <label for="validationServer04">Vehicle Year</label>
+        <input type="number" class="form-control is-invalid" id="validationServer04" placeholder="VehicleYear" required>
+        <div class="invalid-feedback">
+          Please provide a vehicle year.
+        </div>
+      </div>
+
+    </div>
+  -->
+  <p>Vehicle details</p>
+    <div>
+    <select name="car-years" id="car-years" placeholder="VehicleYear"></select>
+    <select name="car-makes" id="car-makes" placeholder="Brand"></select>
+    <select name="car-models" id="car-models" placeholder="car-models"></select>
+    <select name="car-model-trims" id="car-model-trims"></select>
+  </div>
+  <div>
+    <br>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="validationServer02">Not on the list</label>
+            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="otherbrand" value="-" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
+  <br>
+    <!--<button class="btn btn-primary" type="submit">Submit form</button>-->
+    <button type="button" class="btn btn-primary btn-sm" onclick="pushvehicle()">Submit form</button>
+  </form>
+
+
+  <br>
+  <br>
+  <h5> Book a Service</h5>
+  <br>
+  <div class="form-row">
+  <div class="form-group col-md-6 mb-3">
+    <label for="validationServer06">Booking</label>
+    <select id="validationServer06" class="form-control is-valid" placeholder="BookingService" required>
+    <div class="invalid-feedback">
+      Looks good!
+    </div>
+      <option selected> Annual Service</option>
+      <option> Major Service</option>
+      <option>Repair / Fault Service</option>
+      <option> Major Repair Service</option>
+    </select>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="validationServer07">Service time</label>
+    <select id="validationServer07" class="form-control is-valid" placeholder="ServiceTime" required>
+    <div class="invalid-feedback">
+      Looks good!
+    </div>
+      <option selected>09:00-10:00</option>
+      <option>10:00-11:00</option>
+      <option>11:00-12:00</option>
+      <option>12:00-13:00</option>
+      <option>13:00-14:00</option>
+      <option>14:00-15:00</option>
+      <option>15:00-16:00</option>:00
+    </select>
+  </div>
+    <!--
+  <div mbsc-form>
+    <input id="demo" type="hidden" />
+</div>
+-->
+<!-- Material theme
+<div class="auto-jsCalendar material-theme" data-navigator="false" id="my-calendar"></div> -->
+<!-- My calendar element -->
+<div id="my-calendar" class=" material-theme" data-navigator="false"></div>
+
+<!-- Outputs -->
+Day click : <br>
+<input id="my-input-a"><br>
+
+
+<!-- Create the calendar -->
+<script type="text/javascript">
+    // Get the element
+    var element = document.getElementById("my-calendar");
+    // Create the calendar
+    var myCalendar = jsCalendar.new(element);
+    // Get the inputs
+    var inputA = document.getElementById("my-input-a");
+    // Add events
+    myCalendar.onDateClick(function(event, date){
+        inputA.value = date.toString();
+    });
+
+</script>
+<!--
+<a href="./calendar.html">Calendar</a>
+-->
+
+</div>
+</div>
+<div>
+  <button type="button" class="btn btn-primary btn-sm" onclick="pickupdate()">Submit booking time</button>
+</div>
+
+
+
+  <script>
+    // Your web app's Firebase configuration
+    var config = {
+      apiKey: "AIzaSyCV17EfwMCqdTyqL_ONKETYTZ6QFqkvU08",
+      authDomain: "cct-college-alejandro.firebaseapp.com",
+      databaseURL: "https://cct-college-alejandro-default-rtdb.firebaseio.com/",
+      projectId: "cct-college-alejandro",
+      storageBucket: "cct-college-alejandro.appspot.com",
+      messagingSenderId: "97171762789",
+      appId: "1:97171762789:web:fd89b710d2d7b2fd6fe08c",
+      measurementId: "G-W9PK0RS782"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // this line to get connection with the database firestore
+    const db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
+
+  </script>
+ <script src="./js/pushinfo.js"></script>
+</body>
+
+</html>

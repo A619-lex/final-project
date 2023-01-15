@@ -1,0 +1,273 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="./css/stlyfile.css">
+
+
+  <title>Ger’s Garage log page</title>
+</head>
+
+<body class="grey lighten-3">
+
+  <nav class="navbar navbar-light" style="background-color: #3396FF;">
+    <!-- Navbar content -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="./index.html">Menu</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="./index.html">Home </a>
+
+          <div class="dropdown">
+            <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Log in/Sign up
+            </a>
+            <!--
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                      <a class="dropdown-item" href="#">Action</a>
+                                      <a class="dropdown-item" href="#">Another action</a>
+                                      <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                -->
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li class="logged-in" style="display: none;">
+                <a href="" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+              </li>
+              <li class="logged-in" style="display: none;">
+                <a href="" class="grey-text" id="logout">Logout</a>
+              </li>
+              <li class="logged-in" style="display: none;">
+                <a href="" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+              </li>
+              <li class="logged-out" style="display: none;">
+                <a href="" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+              </li>
+              <li class="logged-out" style="display: none;">
+                <a href="" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+              </li>
+              <li class="user-email" style="display: none;">
+                <a id="userEmail">User e-mail</a>
+              </li>
+              <li class="logged-in" style="display: none;">
+                  <a id="adminlogin" href="./nopermission.html" class="grey-text modal-trigger">Admin</a>
+                </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </nav>
+
+  <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+      <br>
+      <div class="account-extras"></div>
+      <button type="button" class="btn btn-primary btn-sm" onclick="getpersonalInfo()">Get your details</button>
+      <br>
+      <hr>
+      <div id="email">email</div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <p id="First-Name">First Name</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Last-Name">Last Name</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Mobile-number">Mobile number</p>
+        </div>
+      </div>
+      <hr>
+      <h5>Your Vehicle details</h5>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <p id="Licence-Number">Licence Number</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Vehicle-type">Vehicle type</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Engine-Type">Engine Type</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Vehicle-Year">Vehicle Year</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p id="Vehicle-brand">Vehicle brand</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Guide</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Create</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+    </ul>
+  </div>
+  <!-- Information list LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 info" style="border: none;">
+    </ul>
+  </div>
+
+  <hr>
+  <br>
+  <br>
+
+  <div class="logged-in" style="display: none;">
+    <div class="container">
+      <div class="col-sm">
+        <h2 style="color:blue;">WELCOME TO GER`S GARAGE</h2>
+      </div>
+      <div class="row">
+
+        <div class="col-4">
+          <img src="images/calendar.jpg" height="80">
+          <h6 style="color:red;">BOOK A SERVICE</h6>
+        </div>
+        <div class="col-4">
+                      <a href="./parts.html" >
+                    <img src="images/mechanic.png" height="80">
+                    <h6 style="color:blue;">BUY CAR PARTS</h6>
+                      </a>
+                  </div>
+        <div class="col-4" >
+          <a href="./login.html" >
+          <img src="images/Log in.jpg"   height="80">
+          <h6 style="color:red;">LOG IN</h6>
+         </a>
+        </div>
+      </div>
+    </div>
+
+    <div  class="logged-in" style="display: none;">
+      <a id="adminlogin2" href="./nopermission.html">
+        <img src="img/manager.png" height="80">
+        <h6 style="color:blue;">Admin</h6>
+      </a>
+    </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCV17EfwMCqdTyqL_ONKETYTZ6QFqkvU08",
+      authDomain: "cct-college-alejandro.firebaseapp.com",
+      databaseURL: "https://cct-college-alejandro-default-rtdb.firebaseio.com/",
+      projectId: "cct-college-alejandro",
+      storageBucket: "cct-college-alejandro.appspot.com",
+      messagingSenderId: "97171762789",
+      appId: "1:97171762789:web:fd89b710d2d7b2fd6fe08c",
+      measurementId: "G-W9PK0RS782"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./js/autorisation.js"></script>
+  <script src="./js/Login.js"></script>
+</body>
+
+</html>

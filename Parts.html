@@ -1,0 +1,74 @@
+<html>
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+
+        <link rel="stylesheet" href="./css/styles.css">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/text.css">
+
+        <title>>Online Parts/Items page</title>
+    </head>
+    <body>
+
+          <!-- Image and text -->
+
+     <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-8">
+                <a class="navbar-brand" href="#">
+                  <img src="./img/phone-icon-hi.png" width="30" height="30" class="d-inline-block align-top" alt="icon"
+                    align="left">
+                <br>0838975907
+                </a>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                <h5>Ger’s Garage</h5>
+              </div>
+            </div>
+          </div>
+
+        <nav class="navbar navbar-light" style="background-color: #3396FF;">
+            <!-- Navbar content -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="./login.html">Go back</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                 <!--<a class="nav-item nav-link active" href="./login.html">Back to the Login page <span class="sr-only">(current)</span></a>-->
+
+
+                </div>
+              </div>
+            </nav>
+
+          </nav>
+        <a id="json">json</a>
+
+        <h3>Online:Shop Page</h3>
+        <div class="content">
+
+            <form id="add-car-form"></form>
+
+            <ul id="Items-list" ></ul>
+
+
+        </div>
+
+        <!--<pre id="json"></pre>>-->
+        <button onClick="getparts()">Get Parts</button>
+
+        <script src="./js/PartsItems.js"></script>
+    </body>
+</html>

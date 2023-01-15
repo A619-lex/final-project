@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+
+
+
+        <h1>Car sevice booking</h1>
+
+      <div class="content">
+        <form id="add-car-form">
+          <div>
+            <input type="text" name="Car Licence Number" placeholder="Car Licence Number">
+            <input type="number" name="Year" placeholder="Year">
+            <input type="text" name="Brand" placeholder="Brand">
+          </div>
+          <div>
+
+              <input type="text" name="Car Engine Type" placeholder="Car Engine Type">
+              <input type="text" name="Car Model" placeholder="Car Model">
+
+          </div>
+          <button onclick="test()">Add Car</button>
+        </form>
+
+      <ul id="car-list">
+        <th >Monkey D.</th>
+        <th >Luffy</th>
+      </ul>
+
+      </div>
+        <script>
+                // Your web app's Firebase configuration
+                var config = {
+                  apiKey: "AIzaSyCV17EfwMCqdTyqL_ONKETYTZ6QFqkvU08",
+                  authDomain: "cct-college-alejandro.firebaseapp.com",
+                  databaseURL: "https://cct-college-alejandro-default-rtdb.firebaseio.com/",
+                  projectId: "cct-college-alejandro",
+                  storageBucket: "cct-college-alejandro.appspot.com",
+                  messagingSenderId: "97171762789",
+                  appId: "1:97171762789:web:fd89b710d2d7b2fd6fe08c",
+                  measurementId: "G-W9PK0RS782"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                // this line to get connection with the database firestore
+                const db = firebase.firestore();
+                db.settings({timestampsInSnapshots: true});
+
+              </script>
+        <script src="./js/CarBook.js"></script>
+    </body>
+</html>
